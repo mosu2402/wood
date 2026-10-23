@@ -1,0 +1,70 @@
+LUXE LAMINATE - SAARI COMMANDS
+===============================
+
+SABSE AASAN TAREEKA (double-click)
+----------------------------------
+Pehli baar :  1-INSTALL.bat  (sirf ek baar)
+Roz        :  2-START.bat    (software chalu + browser khulega)
+Band karna :  2-START.bat wali kaali window band kar do
+
+Login (pehli baar apne aap banta hai):
+  Username : owner
+  Password : Luxe2026
+  Baad me left neeche "Change password" se apna password rakh lena.
+
+
+HAATH SE COMMANDS (PowerShell me)
+---------------------------------
+1) Folder me jao:
+   cd C:\LuxeLaminate\luxe-laminate
+
+2) Pehli baar libraries install (sirf ek baar):
+   python -m pip install fastapi "uvicorn[standard]" sqlalchemy alembic pyjwt bcrypt python-multipart openpyxl reportlab python-dotenv pydantic
+
+3) Database banao / update karo (har nayi zip ke baad):
+   python -m alembic upgrade head
+
+4) Login banao (agar koi login nahi hai):
+   python -m scripts.first_run
+
+5) Software chalao (roz):
+   python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+6) Browser me kholo:
+   http://localhost:8000
+
+
+PASSWORD BHOOL GAYE / LOGIN NAHI HO RAHA
+---------------------------------------
+   cd C:\LuxeLaminate\luxe-laminate
+   python -m scripts.create_owner owner Luxe2026 "Mosam"
+   (phir owner / Luxe2026 se login karo)
+   "Too many wrong attempts" aaye to software band karke dobara chalao.
+
+
+NAYI ZIP AAYE TAB (purana data bachate hue)
+-------------------------------------------
+1) Software band karo (kaali window band).
+2) C:\LuxeLaminate\luxe-laminate  ka naam  luxe-laminate-old  kar do.
+3) Nayi zip C:\LuxeLaminate me extract karo.
+4) luxe-laminate-old se  data  folder copy karke naye luxe-laminate me paste karo (Replace).
+5) 2-START.bat double-click karo.
+   (.env nayi zip me already hai. Agar aapne address/GST purane .env me bhara tha to woh .env bhi copy kar lo.)
+
+
+BACKUP
+------
+Software me: Settings & backup -> Back up now
+Ya command:  python -m scripts.backup
+Backups folder ko hafte me ek baar pen drive / Google Drive me copy karo.
+
+
+.env FILE (dukaan ki details)
+-----------------------------
+notepad .env   se kholo aur bharo:
+  BUSINESS_NAME=Luxe Laminates
+  BUSINESS_ADDRESS=dukaan ka address
+  BUSINESS_PHONE=mobile number
+  BUSINESS_GSTIN=GST number
+  BANK_DETAILS=UPI ID ya bank details (bill pe chhapne ke liye)
+Save karke software band karke dobara chalao.
