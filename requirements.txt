@@ -14,3 +14,4 @@ psycopg2-binary>=2.9; platform_system != "Emscripten"
 # testing
 pytest==9.1.1
 httpx==0.28.1
+gunicorn
